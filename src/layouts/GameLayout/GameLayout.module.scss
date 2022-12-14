@@ -1,0 +1,18 @@
+@import 'src/styles/variables';
+@import 'src/styles/breakpoints';
+@import 'src/styles/mixins';
+
+.Wrapper {
+  .Landscape {
+    display: none;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.Container {
+  padding: 10% vmin(10px);
+  height: 100%;
+  text-align: center;
+}

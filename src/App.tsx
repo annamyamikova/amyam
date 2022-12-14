@@ -1,24 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { FC, useEffect, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import Helmet from 'react-helmet';
 
-const App = () => {
+import { createTheme, ThemeProvider } from '@mui/material';
+import * as locales from '@mui/material/locale';
+
+// Routes
+import Routes from 'routes';
+
+const App: FC = () => {
+  const { i18n } = useTranslation();
+
+  const [locale, setLocale] = useState<keyof typeof locales>(
+    i18n.language as keyof typeof locales
+  );
+
+  useEffect(() => {
+    const onLanguageChanged = (cLocale: keyof typeof locales) => {
+      setLocale(cLocale);
+    };
+
+    i18n.on('languageChanged', onLanguageChanged);
+
+    return () => {
+      i18n.off('languageChanged', onLanguageChanged);
+    };
+  }, []);
+
+  const theme = useMemo(() => createTheme({}, locales[locale]), [locale]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Helmet titleTemplate="%s - Quiz app" defaultTitle="Quiz app" />
+      <Routes />
+    </ThemeProvider>
   );
 };
 
