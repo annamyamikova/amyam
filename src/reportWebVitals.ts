@@ -1,4 +1,4 @@
-import { ReportHandler } from 'web-vitals';
+import { ReportHandler } from 'web-vitals/src/types';
 
 const reportWebVitals = (onPerfEntry?: ReportHandler) => {
   if (onPerfEntry && onPerfEntry instanceof Function) {
