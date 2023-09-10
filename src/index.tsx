@@ -1,4 +1,3 @@
-import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import './localization';
@@ -7,7 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import './styles/index.scss';
 import App from './App';
 
-const root = createRoot(document.getElementById('root') as HTMLElement);
+const container = document.getElementById('root');
+const root = createRoot(container!);
 
 root.render(
   <BrowserRouter>
