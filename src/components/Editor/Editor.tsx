@@ -3,7 +3,7 @@ import { getNextCommand, getPreviousCommand, saveCommandToHistory } from './help
 import useStyles from './styles';
 import { ICommand, ICommandData } from './types';
 import { COMMANDS } from '@constants';
-import { isNotEmpty } from '@helpers';
+import { isNotEmpty, isStringNotEmpty } from '@helpers';
 import clsx from 'clsx';
 import { FC, ReactNode, useEffect, useRef, useState } from 'react';
 
@@ -11,23 +11,24 @@ export interface IEditorProps {
   welcomeMessage: ReactNode;
   prompt?: ReactNode;
   errorMessage?: string;
+  defaultCommand?: ICommand;
   commands: ICommandData;
 }
 
 // TODO: добавить tabs, ctrl, etc
 // TODO: поичнить arrowUp, arrowDown
-// TODO:
 
 export const Editor: FC<IEditorProps> = ({
   welcomeMessage,
   prompt = '>>>',
   errorMessage = 'command not found: ',
+  defaultCommand,
   commands,
 }) => {
   const classes = useStyles();
   const ref = useRef<HTMLDivElement>(null);
 
-  const [commandInput, setCommandInput] = useState<string>();
+  const [commandInput, setCommandInput] = useState<string | undefined>(defaultCommand);
   const [commandsHistory, setCommandsHistory] = useState<string[]>();
   const [currentCommandIndex, setCurrentCommandIndex] = useState<number>();
   const [bufferedContent, setBufferedContent] = useState<ReactNode>();
@@ -50,7 +51,7 @@ export const Editor: FC<IEditorProps> = ({
       ) {
         output = commands[command.toLowerCase() as ICommand].component;
       } else {
-        output = `${errorMessage} ${command}`;
+        output = isStringNotEmpty(command) ? `${errorMessage} ${command}` : undefined;
       }
     }
 
@@ -102,6 +103,15 @@ export const Editor: FC<IEditorProps> = ({
   useEffect(() => {
     document.body.scrollTop = document.body.scrollHeight;
   }, [bufferedContent]);
+
+  useEffect(() => {
+    if (isNotEmpty(defaultCommand)) {
+      enterCommand(commandInput ?? '');
+      saveCommandToHistory({ command: commandInput, setCommandsHistory });
+      setCommandInput(undefined);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDownEvent);

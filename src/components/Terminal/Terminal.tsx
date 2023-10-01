@@ -10,6 +10,7 @@ export const Terminal: FC = () => {
   return (
     <div className={classes.root}>
       <Editor
+        defaultCommand="welcome"
         welcomeMessage={
           <>
             <div>
