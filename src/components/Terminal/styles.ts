@@ -1,25 +1,27 @@
+import { colors, mediaDown } from '@theme';
 import { createUseStyles } from 'react-jss';
 
 export default createUseStyles({
   root: {
-    width: '100%',
     height: 'auto',
     maxWidth: 750,
     margin: [100, 'auto', 0],
+
+    [mediaDown('m')]: {
+      margin: [100, 10, 0],
+    },
   },
 
   prompt: {
-    display: 'inline',
-    color: '#00ff00',
+    color: colors.GREEN,
+    textWrap: 'nowrap',
   },
 
   delta: {
-    display: 'inline',
-    color: '#ff0096',
+    color: colors.PINK,
   },
 
   percent: {
-    display: 'inline',
-    color: '#00bbcc',
+    color: colors.BLUE,
   },
 });

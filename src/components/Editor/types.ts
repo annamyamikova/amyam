@@ -1,7 +1,13 @@
-import { Dispatcher } from '@src/types';
+import { COMMANDS } from '@constants';
+import { Dispatcher } from '@types';
+import { ReactNode } from 'react';
 
-export interface ICommand {
+export interface IPreviousOrNextCommand {
   commandsHistory?: string[];
   currentCommandIndex?: number;
   onSetCurrentCommandIndex: Dispatcher<number | undefined>;
 }
+
+export type ICommand = ValueOf<typeof COMMANDS>;
+
+export type ICommandData = Record<ICommand, ReactNode>;

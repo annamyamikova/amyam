@@ -9,7 +9,7 @@ export default createUseStyles({
     outlineStyle: 'none',
     wordBreak: 'break-all',
     padding: 0,
-    width: 460,
+    width: '100%',
     color: 'white',
 
     '&::placeholder': {

@@ -1,12 +1,12 @@
+import { IPreviousOrNextCommand } from './types';
 import { isEmpty, isNotEmpty } from '@helpers';
-import { ICommand } from './types';
 import { Dispatcher } from '@types';
 
 export const getPreviousCommand = ({
   commandsHistory,
   currentCommandIndex,
   onSetCurrentCommandIndex,
-}: ICommand): string | undefined => {
+}: IPreviousOrNextCommand): string | undefined => {
   if (isEmpty(currentCommandIndex) || isEmpty(commandsHistory)) {
     return;
   }
@@ -27,7 +27,7 @@ export const getNextCommand = ({
   commandsHistory,
   currentCommandIndex,
   onSetCurrentCommandIndex,
-}: ICommand): string | undefined => {
+}: IPreviousOrNextCommand): string | undefined => {
   if (isEmpty(currentCommandIndex) || isEmpty(commandsHistory)) {
     return;
   }

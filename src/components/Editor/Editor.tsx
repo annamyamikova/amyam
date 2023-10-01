@@ -1,15 +1,17 @@
 import { Input } from '../Input';
 import { getNextCommand, getPreviousCommand, saveCommandToHistory } from './helpers';
 import useStyles from './styles';
+import { ICommand, ICommandData } from './types';
+import { COMMANDS } from '@constants';
 import { isNotEmpty } from '@helpers';
 import clsx from 'clsx';
 import { FC, ReactNode, useEffect, useRef, useState } from 'react';
 
 export interface IEditorProps {
-  welcomeMessage: string;
+  welcomeMessage: ReactNode;
   prompt?: ReactNode;
   errorMessage?: string;
-  commands?: Record<string, ReactNode>;
+  commands?: ICommandData;
 }
 
 export const Editor: FC<IEditorProps> = ({
@@ -37,8 +39,8 @@ export const Editor: FC<IEditorProps> = ({
     }
 
     if (isNotEmpty(text)) {
-      if (isNotEmpty(command) && isNotEmpty(commands) && isNotEmpty(commands[command])) {
-        output = commands[command];
+      if (isNotEmpty(command) && COMMANDS.includes(command as ICommand) && isNotEmpty(commands)) {
+        output = commands[command as ICommand];
       } else {
         output = `${errorMessage} ${command}`;
       }
