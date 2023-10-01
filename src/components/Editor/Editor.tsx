@@ -125,7 +125,7 @@ export const Editor: FC<IEditorProps> = ({
       <div className={classes.welcome}>{welcomeMessage}</div>
       {bufferedContent}
       <div className={classes.currentText}>
-        <span>{prompt}</span>
+        {prompt}
         <span className={classes.lineText}>
           <Input value={commandInput} onChange={setCommandInput} />
         </span>

@@ -21,10 +21,10 @@ export const Terminal: FC = () => {
         }
         commands={commands}
         prompt={
-          <span className={classes.prompt}>
+          <div className={classes.prompt}>
             root@Annas-MBP-2<span className={classes.delta}> ~ </span>
             <span className={classes.percent}>%</span>
-          </span>
+          </div>
         }
       />
     </div>

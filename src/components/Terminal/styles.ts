@@ -14,7 +14,7 @@ export default createUseStyles({
 
   prompt: {
     color: colors.GREEN,
-    textWrap: 'nowrap',
+    flexShrink: 0,
   },
 
   delta: {
