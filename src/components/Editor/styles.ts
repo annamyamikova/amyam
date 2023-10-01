@@ -1,8 +1,9 @@
+import { colors } from '@theme';
 import { createUseStyles } from 'react-jss';
 
 export default createUseStyles({
   root: {
-    color: '#ffffff',
+    color: colors.WHITE,
     textAlign: 'left',
   },
 
@@ -11,7 +12,10 @@ export default createUseStyles({
     width: '100%',
   },
 
+  currentText: {
+    display: 'flex',
+  },
+
   welcome: {},
-  currentText: {},
   preWhiteSpace: {},
 });

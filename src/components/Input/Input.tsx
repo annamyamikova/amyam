@@ -1,6 +1,6 @@
-import { FC, FormEvent, ClipboardEvent, FocusEvent, useEffect, useRef } from 'react';
 import useStyles from './styles';
 import { isNotEmpty } from '@helpers';
+import { FC, FormEvent, ClipboardEvent, FocusEvent, useEffect, useRef } from 'react';
 
 export interface IInputProps {
   value: string | undefined;
@@ -9,9 +9,6 @@ export interface IInputProps {
   onBlur?(event: FocusEvent<HTMLInputElement>): void;
   onPaste?(event: ClipboardEvent<HTMLInputElement>): void;
 }
-
-// TODO: Инпут должен иметь width: 100% и break-word: break-all
-// TODO: сделать адаптив
 
 export const Input: FC<IInputProps> = ({ value = '', onChange, onFocus, onBlur }) => {
   const classes = useStyles();
@@ -34,6 +31,12 @@ export const Input: FC<IInputProps> = ({ value = '', onChange, onFocus, onBlur }
     if (isNotEmpty(inputRef.current)) {
       inputRef.current.focus();
     }
+
+    window.onload = () => {
+      if (isNotEmpty(inputRef.current)) {
+        inputRef.current.focus();
+      }
+    };
   }, []);
 
   return (

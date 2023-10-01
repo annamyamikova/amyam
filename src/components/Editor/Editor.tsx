@@ -1,27 +1,34 @@
 import { Input } from '../Input';
 import { getNextCommand, getPreviousCommand, saveCommandToHistory } from './helpers';
 import useStyles from './styles';
-import { isNotEmpty } from '@helpers';
+import { ICommand, ICommandData } from './types';
+import { COMMANDS } from '@constants';
+import { isNotEmpty, isStringNotEmpty } from '@helpers';
 import clsx from 'clsx';
 import { FC, ReactNode, useEffect, useRef, useState } from 'react';
 
 export interface IEditorProps {
-  welcomeMessage: string;
+  welcomeMessage: ReactNode;
   prompt?: ReactNode;
   errorMessage?: string;
-  commands?: Record<string, ReactNode>;
+  defaultCommand?: ICommand;
+  commands: ICommandData;
 }
+
+// TODO: добавить tabs, ctrl, etc
+// TODO: поичнить arrowUp, arrowDown
 
 export const Editor: FC<IEditorProps> = ({
   welcomeMessage,
   prompt = '>>>',
   errorMessage = 'command not found: ',
+  defaultCommand,
   commands,
 }) => {
   const classes = useStyles();
   const ref = useRef<HTMLDivElement>(null);
 
-  const [commandInput, setCommandInput] = useState<string>();
+  const [commandInput, setCommandInput] = useState<string | undefined>(defaultCommand);
   const [commandsHistory, setCommandsHistory] = useState<string[]>();
   const [currentCommandIndex, setCurrentCommandIndex] = useState<number>();
   const [bufferedContent, setBufferedContent] = useState<ReactNode>();
@@ -37,10 +44,14 @@ export const Editor: FC<IEditorProps> = ({
     }
 
     if (isNotEmpty(text)) {
-      if (isNotEmpty(command) && isNotEmpty(commands) && isNotEmpty(commands[command])) {
-        output = commands[command];
+      if (
+        isNotEmpty(command) &&
+        COMMANDS.includes(command.toLowerCase() as ICommand) &&
+        isNotEmpty(commands)
+      ) {
+        output = commands[command.toLowerCase() as ICommand].component;
       } else {
-        output = `${errorMessage} ${command}`;
+        output = isStringNotEmpty(command) ? `${errorMessage} ${command}` : undefined;
       }
     }
 
@@ -92,6 +103,15 @@ export const Editor: FC<IEditorProps> = ({
   useEffect(() => {
     document.body.scrollTop = document.body.scrollHeight;
   }, [bufferedContent]);
+
+  useEffect(() => {
+    if (isNotEmpty(defaultCommand)) {
+      enterCommand(commandInput ?? '');
+      saveCommandToHistory({ command: commandInput, setCommandsHistory });
+      setCommandInput(undefined);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDownEvent);

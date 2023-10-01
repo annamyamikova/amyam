@@ -1,7 +1,8 @@
-import { FC } from 'react';
-import useStyles from './styles';
 import { Editor } from '../Editor';
+import { commands } from './constants';
+import useStyles from './styles';
 import { format } from 'date-fns';
+import { FC } from 'react';
 
 export const Terminal: FC = () => {
   const classes = useStyles();
@@ -9,13 +10,19 @@ export const Terminal: FC = () => {
   return (
     <div className={classes.root}>
       <Editor
-        welcomeMessage={`Last login: ${format(new Date(), 'E MMM dd hh:mm:ss')} on console`}
-        commands={{
-          hello: 'Hello there!',
-        }}
+        defaultCommand="welcome"
+        welcomeMessage={
+          <>
+            <div>
+              Last login: ${format(new Date(), 'E\u00A0MMM\u00A0dd\u00A0hh:mm:ss')}
+              &nbsp;on&nbsp;console
+            </div>
+          </>
+        }
+        commands={commands}
         prompt={
           <span className={classes.prompt}>
-            annamyamikova@Annas-MBP-2<span className={classes.delta}> ~ </span>
+            root@Annas-MBP-2<span className={classes.delta}> ~ </span>
             <span className={classes.percent}>%</span>
           </span>
         }
