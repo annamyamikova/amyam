@@ -10,6 +10,7 @@ export default createUseStyles({
   lineText: {
     marginLeft: 8,
     width: '100%',
+    flexShrink: 0,
   },
 
   currentText: {
