@@ -3,6 +3,7 @@ export const colors = {
   GREEN: '#00ff00',
   PINK: '#ff0096',
   BLUE: '#00bbcc',
+  DARK_BLUE: '#017c87',
 } as const;
 
 export const fontWeight = {

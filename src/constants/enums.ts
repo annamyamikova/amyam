@@ -1,1 +1,1 @@
-export const COMMANDS = ['cmd', 'ls', 'clear', 'cat', 'whoami'] as const;
+export const COMMANDS = ['help', 'profile', 'socials', 'welcome', 'clear'] as const;

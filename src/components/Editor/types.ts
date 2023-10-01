@@ -10,4 +10,4 @@ export interface IPreviousOrNextCommand {
 
 export type ICommand = ValueOf<typeof COMMANDS>;
 
-export type ICommandData = Record<ICommand, ReactNode>;
+export type ICommandData = Record<ICommand, { desc: string; component?: ReactNode }>;

@@ -11,8 +11,12 @@ export interface IEditorProps {
   welcomeMessage: ReactNode;
   prompt?: ReactNode;
   errorMessage?: string;
-  commands?: ICommandData;
+  commands: ICommandData;
 }
+
+// TODO: добавить tabs, ctrl, etc
+// TODO: поичнить arrowUp, arrowDown
+// TODO:
 
 export const Editor: FC<IEditorProps> = ({
   welcomeMessage,
@@ -39,8 +43,12 @@ export const Editor: FC<IEditorProps> = ({
     }
 
     if (isNotEmpty(text)) {
-      if (isNotEmpty(command) && COMMANDS.includes(command as ICommand) && isNotEmpty(commands)) {
-        output = commands[command as ICommand];
+      if (
+        isNotEmpty(command) &&
+        COMMANDS.includes(command.toLowerCase() as ICommand) &&
+        isNotEmpty(commands)
+      ) {
+        output = commands[command.toLowerCase() as ICommand].component;
       } else {
         output = `${errorMessage} ${command}`;
       }
