@@ -14,7 +14,7 @@ export const Terminal: FC = () => {
         welcomeMessage={
           <>
             <div>
-              Last login: ${format(new Date(), 'E\u00A0MMM\u00A0dd\u00A0hh:mm:ss')}
+              Last login: {format(new Date(), 'E\u00A0MMM\u00A0dd\u00A0hh:mm:ss')}
               &nbsp;on&nbsp;console
             </div>
           </>
