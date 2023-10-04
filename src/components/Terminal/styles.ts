@@ -15,6 +15,7 @@ export default createUseStyles({
   prompt: {
     color: colors.GREEN,
     flexShrink: 0,
+    display: 'inline',
   },
 
   delta: {

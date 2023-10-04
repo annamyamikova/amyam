@@ -9,7 +9,7 @@ export const Welcome: FC = () => {
   const { version } = packageJson;
 
   const dateDifference = useMemo(() => {
-    const diffInMonths = differenceInMonths(new Date(), new Date(Date.parse('2021-09-21')));
+    const diffInMonths = differenceInMonths(new Date(), new Date(Date.parse('2020-09-21')));
 
     return `${Math.floor(diffInMonths / 12)} years ${
       diffInMonths % 12
