@@ -1,0 +1,42 @@
+:root {
+  font-family: 'Source Code Pro', monospace;
+  line-height: 1.5;
+  font-weight: 400;
+  width: 100%;
+
+  color: rgba(255, 255, 255, 0.87);
+  background-color: black;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  font-weight: 500;
+  color: #00bbcc;
+  text-decoration: inherit;
+  width: fit-content;
+  transition: color 0.25s ease-in-out;
+}
+
+a:hover {
+  color: #017c87;
+}
+
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  position: relative;
+  margin: 0;
+}
+
+input {
+  font: inherit;
+}
