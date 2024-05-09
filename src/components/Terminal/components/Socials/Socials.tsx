@@ -25,7 +25,7 @@ export const Socials: FC = () => {
         >
           Instagram
         </a>
-        <a target="_blank" href="https://t.me/AnnaMyamikova" rel="noreferrer">
+        <a target="_blank" href="https://t.me/annamyam" rel="noreferrer">
           Telegram
         </a>
         <a target="_blank" href="https://vk.com/amyamikova" rel="noreferrer">
@@ -36,6 +36,8 @@ export const Socials: FC = () => {
         If&nbsp;you would like to&nbsp;get on&nbsp;touch with&nbsp;me, feel free to&nbsp;send
         me&nbsp;an&nbsp;email&nbsp;at
         <a href="mailto:myamikova9@gmail.com"> myamikova9@gmail.com</a>
+        Feel free to drop a message, anytime! Let's code, collaborate, and create the future of
+        technology together. Welcome on board!
       </p>
     </div>
   );
