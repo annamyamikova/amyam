@@ -112,14 +112,12 @@ module.exports = {
         format: ['camelCase'],
         leadingUnderscore: 'allow',
       },
-      // для констант
       {
         selector: 'variable',
         modifiers: ['const'],
         format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
         leadingUnderscore: 'forbid',
       },
-      // для react компонентов
       {
         selector: 'variable',
         modifiers: ['const'],
@@ -127,7 +125,6 @@ module.exports = {
         format: ['camelCase', 'PascalCase'],
         leadingUnderscore: 'forbid',
       },
-      // для react компонентов в качестве параметра
       {
         selector: 'parameter',
         types: ['function'],
@@ -138,7 +135,6 @@ module.exports = {
         format: ['camelCase', 'PascalCase'],
       },
     ],
-    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'react/prop-types': 0,
     'react/display-name': 0,
     'react/no-unused-prop-types': 'warn',
