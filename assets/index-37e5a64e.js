@@ -3,7 +3,7 @@ var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 var require_index_001 = __commonJS({
-  "assets/index-9d52715f.js"(exports, module) {
+  "assets/index-37e5a64e.js"(exports, module) {
     function _mergeNamespaces(n2, m2) {
       for (var i = 0; i < m2.length; i++) {
         const e2 = m2[i];
@@ -7411,7 +7411,7 @@ var require_index_001 = __commonJS({
       DataRouterStateHook2["UseFetchers"] = "useFetchers";
       DataRouterStateHook2["UseScrollRestoration"] = "useScrollRestoration";
     })(DataRouterStateHook || (DataRouterStateHook = {}));
-    const Routes = () => /* @__PURE__ */ jsx(Routes$1, { children: /* @__PURE__ */ jsx(Route, { path: "/", element: /* @__PURE__ */ jsx(Home, {}) }) });
+    const Routes = () => /* @__PURE__ */ jsx(Routes$1, { children: /* @__PURE__ */ jsx(Route, { path: "/amyam", element: /* @__PURE__ */ jsx(Home, {}) }) });
     const common = {
       black: "#000",
       white: "#fff"
@@ -25607,7 +25607,7 @@ var require_index_001 = __commonJS({
     });
     const scriptRel = "modulepreload";
     const assetsURL = function(dep) {
-      return "/" + dep;
+      return "/amyam/" + dep;
     };
     const seen = {};
     const __vitePreload = function preload(baseModule, deps, importerUrl) {
