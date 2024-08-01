@@ -11,6 +11,7 @@ export default defineConfig((data) => ({
       ...loadEnv(data.mode, process.cwd()),
     },
   },
+  base: '/amyam',
   server: {
     port: 8080,
   },
