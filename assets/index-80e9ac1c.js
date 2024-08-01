@@ -3,7 +3,7 @@ var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 var require_index_001 = __commonJS({
-  "assets/index-26dea2a0.js"(exports, module) {
+  "assets/index-80e9ac1c.js"(exports, module) {
     function _mergeNamespaces(n2, m2) {
       for (var i = 0; i < m2.length; i++) {
         const e2 = m2[i];
@@ -6191,7 +6191,7 @@ var require_index_001 = __commonJS({
     const homepage = "https://annamyamikova.github.io/amyam";
     const scripts = {
       predeploy: "yarn build",
-      deploy: "gh-pages -d build",
+      deploy: "yarn build & gh-pages -d build",
       "local-settings": "node create-local-settings.js",
       dev: "vite",
       build: "tsc && vite build",
@@ -25607,7 +25607,7 @@ var require_index_001 = __commonJS({
     });
     const scriptRel = "modulepreload";
     const assetsURL = function(dep) {
-      return "/" + dep;
+      return "/amyam/" + dep;
     };
     const seen = {};
     const __vitePreload = function preload(baseModule, deps, importerUrl) {
